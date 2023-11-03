@@ -1,9 +1,11 @@
 from pronoun import Pronoun
 from verb import Verb
+from question import Question
 from tense import *
 import random
 
 # Still need to add error handling.
+# Need to make question struct and tense struct
 
 
 def parse_verbs(verb_list):
@@ -16,7 +18,7 @@ def parse_verbs(verb_list):
 
 
 def set_time():
-    time = input("How long would you like to play? (in Minutes)")  # no error handling
+    time = input("How long would you like to play? (in Minutes) ")  # no error handling
     return int(time)
 
 
@@ -28,8 +30,8 @@ def select_question(verb_list, pro):
     chosen_verb = random.choice(verb_list)
     pro.pick_pronoun()
     chosen_tense = random.choice(TENSES)
-    question = "Conjugate " + pro.chosen + ' ' + chosen_verb.infinitive + " in " + chosen_tense + " tense."
-    return question
+    #curr_question = Question()
+    #print(curr_question.verb)
 
 
 def check_answer():
@@ -44,9 +46,8 @@ if __name__ == '__main__':
 
     parse_verbs(verbs)
     timer = set_time()
-    curr_prompt = select_question(verbs, pronouns)
-    response = input(curr_prompt)
+    select_question(verbs, pronouns)
 
-
+    # response = input(curr_prompt)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
