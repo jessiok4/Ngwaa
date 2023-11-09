@@ -1,13 +1,13 @@
-from tense import *
 
 
 class Verb:
     def __init__(self, infinitive):
         self.infinitive = infinitive
-        self.__e_group = self.__check_group()  # boolean
+        self.e_group = self.__check_group()  # boolean
         self.imperative = self.__create_imperative()
         self.past = self.__create_past()
-        self.pres_n_fut = self.__create_pres_n_fut()
+        self.future = self.__create_future()
+        self.present = self.__create_present()
 
     """ The function below checks the first letter of the infinitive verb
     to determine whether the verb is apart of the 'e' group or 'a' group. 
@@ -22,7 +22,7 @@ class Verb:
     def __create_imperative(self):
         imperative = self.infinitive[1:]  # Need to handle root ending in u or o
         if len(imperative) <= 2:
-            if self.__e_group:
+            if self.e_group:
                 imperative = imperative + 'e'
             else:
                 imperative = imperative + 'a'
@@ -40,24 +40,25 @@ class Verb:
         return past
 
     """ The function below transforms the Igbo infinitive verb 
-    into the base for present & future tense. This works for most 
-    but not all verbs.
+    into the future tense. This works for most but not all verbs.
     """
-    def __create_pres_n_fut(self):
+    def __create_future(self):
         future = self.infinitive[1:]
-        if self.__e_group:
+        if self.e_group:
             future = 'e' + future
         else:
             future = 'a' + future
+        future = "ga " + future
         return future
 
-    """ The function below returns the second half of the solution to the
-    prompted question.
+    """ The function below transforms the Igbo infinitive verb 
+    into the present tense. This works for most but not all verbs.
     """
-    def get_answer(self, tense):
-        if tense == PRESENT or tense == FUTURE:
-            return self.pres_n_fut
-        elif tense == PAST:
-            return self.past
+    def __create_present(self):
+        present = self.infinitive[1:]
+        if self.e_group:
+            present = 'e' + present
         else:
-            return self.imperative
+            present = 'a' + present
+        present = "na " + present
+        return present
