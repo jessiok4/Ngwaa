@@ -20,10 +20,14 @@ class Verb:
     into the imperative tense.
     """
     def __create_imperative(self):
-        imperative = self.infinitive[1:]  # Need to handle root ending in u or o
+        imperative = self.infinitive[1:]
         if len(imperative) <= 2:
             if self.e_group:
                 imperative = imperative + 'e'
+            elif imperative[1] == 'u' or imperative[1] == 'o':
+                imperative = imperative + 'o'
+            elif imperative[1] == '\u1EE5' or imperative[1] == '\u1ECD':
+                imperative = imperative + '\u1ECD'
             else:
                 imperative = imperative + 'a'
         return imperative

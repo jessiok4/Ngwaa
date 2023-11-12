@@ -30,14 +30,14 @@ class Question:
         if self.verb.e_group:
             solution = "i " + conjugation
         else:
-            solution = "*** " + conjugation
+            solution = "\u1ECB " + conjugation
         answer.append(solution)
 
     def third_person_conj(self, conjugation, answer):
         if self.verb.e_group:
             solution = "o " + conjugation
         else:
-            solution = "*** " + conjugation
+            solution = "\u1ECD " + conjugation
         answer.append(solution)
 
     def get_past(self):
@@ -70,7 +70,8 @@ class Question:
     def get_future(self):
         answer = []
         if self.pronoun == FIRST_PERSON_SING:
-            pass
+            self.first_person_conj(self.verb.future[:2], answer)
+            answer = [conjugation + self.verb.future[2:] for conjugation in answer]
         elif self.pronoun == SECOND_PERSON_SING:
             self.second_person_conj(self.verb.future, answer)
         elif self.pronoun == THIRD_PERSON_SING:
