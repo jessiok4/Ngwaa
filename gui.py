@@ -192,14 +192,16 @@ class GamePage(tk.Frame):
         header.pack(side="top", fill="both")
 
         # SCORE #
-        self.score_label = self.bg_canvas.create_text(43, 68,
+        self.score_label = self.bg_canvas.create_text(16, 47,
                                                       text="0/0",
                                                       fill=OFF_WHITE,
+                                                      anchor="nw",
                                                       font=HEADER_FONT)
         # TIMER #
-        self.timer_label = self.bg_canvas.create_text(600, 68,
+        self.timer_label = self.bg_canvas.create_text(603, 47,
                                                       text="5:00",
                                                       fill=OFF_WHITE,
+                                                      anchor="n",
                                                       font=HEADER_FONT)
 
         # QUESTION #
