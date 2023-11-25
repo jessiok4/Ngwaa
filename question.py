@@ -1,5 +1,6 @@
 from tense import *
 from pronoun import *
+from accents import *
 
 
 class Question:
@@ -30,14 +31,14 @@ class Question:
         if self.verb.e_group:
             solution = "i " + conjugation
         else:
-            solution = "\u1ECB " + conjugation
+            solution = f"{I_ACCENT} {conjugation}"
         answer.append(solution)
 
     def third_person_conj(self, conjugation, answer):
         if self.verb.e_group:
             solution = "o " + conjugation
         else:
-            solution = "\u1ECD " + conjugation
+            solution = f"{O_ACCENT} {conjugation}"
         answer.append(solution)
 
     def get_past(self):
@@ -53,7 +54,7 @@ class Question:
             answer.append(solution)
         return answer
 
-    def get_present(self):
+    def get_pres_fut(self):
         answer = []
         if self.pronoun == FIRST_PERSON_SING:
             self.first_person_conj(self.verb.present[:2], answer)
@@ -64,20 +65,6 @@ class Question:
             self.third_person_conj(self.verb.present, answer)
         else:
             solution = self.pronoun + ' ' + self.verb.present
-            answer.append(solution)
-        return answer
-
-    def get_future(self):
-        answer = []
-        if self.pronoun == FIRST_PERSON_SING:
-            self.first_person_conj(self.verb.future[:2], answer)
-            answer = [conjugation + self.verb.future[2:] for conjugation in answer]
-        elif self.pronoun == SECOND_PERSON_SING:
-            self.second_person_conj(self.verb.future, answer)
-        elif self.pronoun == THIRD_PERSON_SING:
-            self.third_person_conj(self.verb.future, answer)
-        else:
-            solution = self.pronoun + ' ' + self.verb.future
             answer.append(solution)
         return answer
 
@@ -97,10 +84,10 @@ class Question:
             answer_list = self.get_past()
 
         elif self.tense == PRESENT:
-            answer_list = self.get_present()
+            answer_list = self.get_pres_fut()
 
         elif self.tense == FUTURE:
-            answer_list = self.get_future()
+            answer_list = self.get_pres_fut()
 
         else:
             answer_list = self.get_imperative()

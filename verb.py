@@ -1,3 +1,4 @@
+from accents import *
 
 
 class Verb:
@@ -26,8 +27,8 @@ class Verb:
                 imperative = imperative + 'e'
             elif imperative[1] == 'u' or imperative[1] == 'o':
                 imperative = imperative + 'o'
-            elif imperative[1] == '\u1EE5' or imperative[1] == '\u1ECD':
-                imperative = imperative + '\u1ECD'
+            elif imperative[1] == U_ACCENT or imperative[1] == O_ACCENT:
+                imperative = imperative + O_ACCENT
             else:
                 imperative = imperative + 'a'
         return imperative

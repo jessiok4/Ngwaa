@@ -1,0 +1,11 @@
+HEADER_FONT = ("Arial Black", 20)
+QUESTION_FONT = ("Corbel", 24)
+FEEDBACK_FONT = ("Corbel", 14)
+INPUT_TEXT = ("Helvetica Bold", 20)
+BUTTON_FONT = ("Helvetica Bold", 16)
+MEDIUM_FONT = ("Corbel Bold", 14)
+SMALL_FONT = ("Corbel", 9)
+BLUE = "#233D4D"
+OFF_WHITE = "#FFFFEE"
+WHITE = "#FFF"
+BLACK = "#333333"
