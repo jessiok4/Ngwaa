@@ -9,6 +9,9 @@ from tense import *
 from pronoun import *
 from question import Question
 
+LARGE_VERB_LIST = 'large_verb_list.txt'
+SMALL_VERB_LIST = 'sample_verbs.txt'
+
 
 class Game:
     def __init__(self):
@@ -21,7 +24,7 @@ class Game:
         self.num_asked = 0
 
     def parse_verbs(self):
-        with codecs.open('sample_verbs.txt', encoding='utf-8') as f:
+        with codecs.open(LARGE_VERB_LIST, encoding='utf-8') as f:
             for line in f:
                 infinitive = line.strip()
                 try:

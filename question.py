@@ -54,17 +54,17 @@ class Question:
             answer.append(solution)
         return answer
 
-    def get_pres_fut(self):
+    def get_pres_fut(self, tense):
         answer = []
         if self.pronoun == FIRST_PERSON_SING:
-            self.first_person_conj(self.verb.present[:2], answer)
-            answer = [conjugation + self.verb.present[2:] for conjugation in answer]
+            self.first_person_conj(tense[:2], answer)
+            answer = [conjugation + tense[2:] for conjugation in answer]
         elif self.pronoun == SECOND_PERSON_SING:
-            self.second_person_conj(self.verb.present, answer)
+            self.second_person_conj(tense, answer)
         elif self.pronoun == THIRD_PERSON_SING:
-            self.third_person_conj(self.verb.present, answer)
+            self.third_person_conj(tense, answer)
         else:
-            solution = self.pronoun + ' ' + self.verb.present
+            solution = self.pronoun + ' ' + tense
             answer.append(solution)
         return answer
 
@@ -84,10 +84,10 @@ class Question:
             answer_list = self.get_past()
 
         elif self.tense == PRESENT:
-            answer_list = self.get_pres_fut()
+            answer_list = self.get_pres_fut(self.verb.present)
 
         elif self.tense == FUTURE:
-            answer_list = self.get_pres_fut()
+            answer_list = self.get_pres_fut(self.verb.future)
 
         else:
             answer_list = self.get_imperative()

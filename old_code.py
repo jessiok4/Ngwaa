@@ -7,19 +7,11 @@ from question import Question
 from tense import *
 from verb import Verb
 
-# Need to make user interface that also lets you select what verb tenses you want to practice.
-# not sure if this is the correct way to set timer LOL
-
 """
-Further down the line goal, get program to allow you to add the accent 
-marks if you don't have the proper keyboard
+This is old code that I'm no longer using within the program. I am still holding onto it
+incase I later decide to build this out with something other than Tkinter
 """
 
-""" 
-Consider doing *thing from CS 161* that improves algorithm speed. 
-Thing that prevents you from resolving something you've already solved.
-Stores the solved information somewhere that's accessible
-"""
 
 #
 # def parse_verbs(verb_list):
